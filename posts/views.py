@@ -9,6 +9,9 @@ class PostListView(ListView):
     model = models.Post
     template_name = 'post_list.html'
 
+    def get_queryset(self):
+        return models.Post.objects.order_by('-date')
+
 
 class PostDetailView(DetailView):
     model = models.Post
