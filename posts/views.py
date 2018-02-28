@@ -30,4 +30,8 @@ class PostDeleteView(DeleteView):
 class PostCreateView(CreateView):
     model = models.Post
     template_name = 'post_new.html'
-    fields = ['message', 'author']
+    fields = ['message']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
