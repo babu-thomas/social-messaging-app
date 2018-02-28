@@ -24,6 +24,8 @@
                         <span class="font-weight-bold">{{ comment.author }} &middot;</span>
                         {{ comment }}
                     </p>
+                {% empty %}
+                    <span class="text-muted">No comments</span>
                 {% endfor %}
             </div>
         </div>
