@@ -13,12 +13,18 @@
                 <span class="text-muted">
                     {{ post.date }}
                 </span>
+                <a href="{% url 'post_edit' post.pk %}">Edit</a> | <a href="{% url 'post_delete' post.pk %}">Delete</a>
             </div>
             <div class="card-body">
-                {{ post.message }}
+                <p>{{ post.message }}</p>
             </div>
-            <div class="card-footer text-center text-muted">
-                <a href="{% url 'post_edit' post.pk %}">Edit</a> | <a href="{% url 'post_delete' post.pk %}">Delete</a>
+            <div class="card-footer">
+                {% for comment in post.comment_set.all %}
+                    <p>
+                        <span class="font-weight-bold">{{ comment.author }} &middot;</span>
+                        {{ comment }}
+                    </p>
+                {% endfor %}
             </div>
         </div>
         <br />
